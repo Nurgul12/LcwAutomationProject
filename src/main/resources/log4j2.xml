@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <!-- Define Appenders (log targets) -->
+    <Appenders>
+        <!-- Write logs to the console -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c{1} - %m%n</Pattern>
+            </PatternLayout>
+        </Console>
+
+        <!-- Write logs to a file -->
+        <File name="File" fileName="logs/app.log">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c{1} - %m%n</Pattern>
+            </PatternLayout>
+        </File>
+
+        <!-- AsyncAppender (Process logs asynchronously) -->
+        <Async name="AsyncConsole">
+            <AppenderRef ref="Console"/>
+        </Async>
+    </Appenders>
+
+    <!-- Loggers ( define log levels and specify which Appenders to use) -->
+    <Loggers>
+        <!-- Root logger -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+            <AppenderRef ref="AsyncConsole"/>
+        </Root>
+    </Loggers>
+</Configuration>
